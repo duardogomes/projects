@@ -1,10 +1,13 @@
 package br.com.dxt.domain;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 
 @Entity
 public class Servico extends BaseEntity {
 
-	public String tipo;
+	@Enumerated(EnumType.STRING)
+	public TipoServico tipo;
 	
 }
