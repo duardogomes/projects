@@ -13,5 +13,10 @@ public class Endereco extends BaseEntity {
 	@Column(length=2)
 	@Enumerated(EnumType.STRING)
 	public UF estado;
+	@Override
+	public String toString() {
+		return "Endereco [rua=" + rua + ", cidade=" + cidade + ", estado="
+				+ estado + ", id=" + id + "]";
+	}
 	
 }

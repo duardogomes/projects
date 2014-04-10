@@ -8,11 +8,5 @@ import javax.persistence.Entity;
 public class PessoaFisica extends Pessoa {
 
 	public String cpf;
-
-	@Override
-	public String toString() {
-		return "PessoaFisica [cpf=" + cpf + ", nome=" + nome + ", id=" + id
-				+ "]";
-	}
 	
 }
