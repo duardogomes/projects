@@ -15,4 +15,11 @@ public class EntityManagerFactoryWrapper {
 		return emf.createEntityManager();
 	}
 	
+	
+	public static void closeEntityManager(){
+		if (emf != null) {
+			emf.close();
+		}
+	}
+	
 }

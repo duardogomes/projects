@@ -8,6 +8,7 @@ import javax.persistence.TypedQuery;
 import br.com.dxt.domain.BaseEntity;
 import br.com.dxt.domain.Pessoa;
 import br.com.dxt.domain.PessoaFisica;
+import br.com.dxt.domain.TipoTelefone;
 import br.com.dxt.domain.UF;
 import br.com.dxt.util.EntityManagerFactoryWrapper;
 
@@ -55,6 +56,16 @@ public class Service {
 	public List<Pessoa> buscarPessoaAgencia(String agencia){
 		TypedQuery<Pessoa> qry = em.createQuery("FROM "+Pessoa.class.getSimpleName() + " p where p.agencia.codigo = :codigo_agencia", Pessoa.class);
 		qry.setParameter("codigo_agencia", agencia);
+		return qry.getResultList();
+	}
+	
+	public List<Pessoa> buscarPessoaCelular(){
+		String jpql = new String();
+		jpql = "SELECT p FROM "+Pessoa.class.getSimpleName() + " p ";
+		jpql += "INNER JOIN p.telefones telefone ";
+		jpql += "WHERE telefone.tipo = :tipo_telefone";
+		TypedQuery<Pessoa> qry = em.createQuery(jpql, Pessoa.class);
+		qry.setParameter("tipo_telefone", TipoTelefone.CEL);
 		return qry.getResultList();
 	}
 }

@@ -20,7 +20,7 @@ public class Pessoa extends BaseEntity {
 	public String nome;
 	
 	@OneToMany
-	@JoinColumn(name = "id_p")
+	@JoinColumn(name = "pessoa_id")
 	public List<Telefone> telefones; 
 	
 	
@@ -28,15 +28,19 @@ public class Pessoa extends BaseEntity {
 	@JoinColumn(name = "endereco")
 	public Endereco endereco;
 
-	@ManyToOne
-	@JoinColumn(name = "agencia")
-	public Agencia agencia;
-	
 
 	@Override
 	public String toString() {
-		return "Pessoa [nome=" + nome + ", endereco=" + endereco + ", agencia="
-				+ agencia + ", id=" + id + "]";
+		return "Pessoa [nome=" + nome + ", telefones=" + telefones
+				+ ", endereco=" + endereco + ", id=" + id + "]";
 	}
+
+	/*
+	@ManyToOne
+	@JoinColumn(name = "agencia")
+	public Agencia agencia;
+	*/
+
+	
 	
 }

@@ -8,6 +8,8 @@ import br.com.dxt.domain.Endereco;
 import br.com.dxt.domain.Pessoa;
 import br.com.dxt.domain.PessoaFisica;
 import br.com.dxt.domain.PessoaJuridica;
+import br.com.dxt.domain.Telefone;
+import br.com.dxt.domain.TipoTelefone;
 import br.com.dxt.domain.UF;
 import br.com.dxt.service.Service;
 
@@ -22,19 +24,53 @@ public class Principal {
 		end.cidade = "POLIS II";
 		end.estado = UF.SP;
 		s.salvar(end);
-
+		
+		Endereco end2 = new Endereco();
+		end2.rua = "RUA CIANDT";
+		end2.cidade = "POLIS II";
+		end2.estado = UF.SP;
+		s.salvar(end2);
+		
+		Telefone tel1 = new Telefone();
+		tel1.tipo = TipoTelefone.CEL;
+		tel1.ddd = "19";
+		tel1.numero = "98877-6655";
+		s.salvar(tel1);
+		
+		Telefone tel2 = new Telefone();
+		tel2.tipo = TipoTelefone.FIXO;
+		tel2.ddd = "19";
+		tel2.numero = "98877-4433";
+		s.salvar(tel2);
+		
+		Telefone tel3 = new Telefone();
+		tel3.tipo = TipoTelefone.CEL;
+		tel3.ddd = "19";
+		tel3.numero = "98877-2211";
+		s.salvar(tel3);
+		
+		List<Telefone> lt1 = new ArrayList<Telefone>();
+		lt1.add(tel1);
+		lt1.add(tel2);
+		
+		List<Telefone> lt2 = new ArrayList<Telefone>();
+		lt2.add(tel3);
+		
+			
 		PessoaFisica pf = new PessoaFisica();
 		pf.nome = "PESSOA FISICA1";
 		pf.cpf = "12345678900";
 		pf.endereco = end;
 		//pf.agencia = age;
+		pf.telefones = lt1;
 		s.salvar(pf);
 		
 		PessoaFisica pf1 = new PessoaFisica();
 		pf1.nome = "PESSOA FISICA2";
 		pf1.cpf = "74588912399";
-		pf1.endereco = end;
+		pf1.endereco = end2;
 		//pf.agencia = age;
+		pf1.telefones = lt2;
 		s.salvar(pf1);
 		
 		PessoaFisica pf2 = new PessoaFisica();
@@ -63,7 +99,14 @@ public class Principal {
 		age.pessoas = lp;
 		s.salvar(age);
 		
-
+		
+		for (Pessoa pe : s.buscarPessoaCelular()) {
+			System.out.println(pe);
+		}
+		
+		
+		
+		/*
 		System.out.println("======================");
 
 		for (Pessoa pe : s.buscarPessoaAgencia("0520")) {
@@ -74,7 +117,7 @@ public class Principal {
 
 		for (Pessoa pe : s.buscarPessoaUF(UF.SP)) {
 
-			if (pe instanceof PessoaJuridica) {
+			if (pe instanceof PescloseEntityManagersoaJuridica) {
 				System.out.println((PessoaJuridica) pe);
 			} else if (pe instanceof PessoaFisica) {
 				System.out.println((PessoaFisica) pe);
@@ -82,15 +125,17 @@ public class Principal {
 
 		}
 
-		/*
-		 * for (PessoaFisica p : s.buscar(PessoaFisica.class)) {
-		 * System.out.println(p); }
-		 * 
-		 * 
-		 * PessoaFisica pE = s.buscar(PessoaFisica.class, 1L);
-		 * System.out.println(pE.nome); System.out.println(pE.endereco.cidade);
+		
+		  for (PessoaFisica p : s.buscar(PessoaFisica.class)) {
+		  System.out.println(p); }
+		  
+		  
+		  PessoaFisica pE = s.buscar(PessoaFisica.class, 1L);
+		  System.out.println(pE.nome); System.out.println(pE.endereco.cidade);
 		 */
 
+		EntityManagerFactoryWrapper.closeEntityManager();
+		
 	}
 
 }
