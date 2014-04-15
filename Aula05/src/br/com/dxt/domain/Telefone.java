@@ -14,4 +14,13 @@ public class Telefone extends BaseEntity {
 	public String ddd;
 	public String numero;
 	
+	
+	@Override
+	public String toString() {
+		return "Telefone [tipo=" + tipo + ", ddd=" + ddd + ", numero=" + numero
+				+ ", id=" + id + "]";
+	}
+	
+	
+	
 }
