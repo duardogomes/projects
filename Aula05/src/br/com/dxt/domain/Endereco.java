@@ -1,12 +1,14 @@
 package br.com.dxt.domain;
 
 import javax.persistence.Column;
+import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 
-@Entity
-public class Endereco extends BaseEntity {
+//@Entity
+@Embeddable
+public class Endereco {//extends BaseEntity {
 
 	public String rua;
 	public String cidade;
@@ -16,7 +18,7 @@ public class Endereco extends BaseEntity {
 	@Override
 	public String toString() {
 		return "Endereco [rua=" + rua + ", cidade=" + cidade + ", estado="
-				+ estado + ", id=" + id + "]";
+				+ estado +"]";
 	}
 	
 }

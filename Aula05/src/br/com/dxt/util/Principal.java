@@ -23,31 +23,31 @@ public class Principal {
 		end.rua = "RUA DEXTRA";
 		end.cidade = "POLIS II";
 		end.estado = UF.SP;
-		s.salvar(end);
+		//s.salvar(end);
 		
 		Endereco end2 = new Endereco();
 		end2.rua = "RUA CIANDT";
 		end2.cidade = "POLIS II";
 		end2.estado = UF.SP;
-		s.salvar(end2);
+		//s.salvar(end2);
 		
 		Telefone tel1 = new Telefone();
 		tel1.tipo = TipoTelefone.CEL;
 		tel1.ddd = "19";
 		tel1.numero = "98877-6655";
-		s.salvar(tel1);
+		//s.salvar(tel1);
 		
 		Telefone tel2 = new Telefone();
 		tel2.tipo = TipoTelefone.FIXO;
 		tel2.ddd = "19";
 		tel2.numero = "98877-4433";
-		s.salvar(tel2);
+		//s.salvar(tel2);
 		
 		Telefone tel3 = new Telefone();
 		tel3.tipo = TipoTelefone.CEL;
 		tel3.ddd = "19";
 		tel3.numero = "98877-2211";
-		s.salvar(tel3);
+		//s.salvar(tel3);
 		
 		List<Telefone> lt1 = new ArrayList<Telefone>();
 		lt1.add(tel1);
@@ -61,10 +61,11 @@ public class Principal {
 		pf.nome = "PESSOA FISICA1";
 		pf.cpf = "12345678900";
 		pf.endereco = end;
+		pf.endereco_comercial = end2;
 		//pf.agencia = age;
 		pf.telefones = lt1;
 		s.salvar(pf);
-		
+		/*
 		PessoaFisica pf1 = new PessoaFisica();
 		pf1.nome = "PESSOA FISICA2";
 		pf1.cpf = "74588912399";
@@ -92,11 +93,11 @@ public class Principal {
 		lp.add(pf1);
 		lp.add(pf2);
 		lp.add(pf3);
-				
+				*/
 		Agencia age = new Agencia();
 		age.codigo = "0520";
 		age.nomeGerente = "NOME DO GERENTE";
-		age.pessoas = lp;
+		//age.pessoas = lp;
 		s.salvar(age);
 		
 		
